@@ -13,7 +13,6 @@ export class AuthRoute {
     }
 
     private initializeRoutes() {
-        this.router.post("/signup", ValidationMiddleware(CreateUserDto), this.auth.SignUp);
         this.router.post("/login", this.auth.Login);
     }
 }
