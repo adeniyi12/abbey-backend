@@ -27,4 +27,15 @@ export class AuthController {
       next(error);
     }
   };
+
+  public googleLogin = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const userData: User = req.body;
+      const { cookie, result: findUser, accessData } = await this.auth.googleAuthentication(userData);
+      res.setHeader('Set-Cookie', [`${cookie}; SameSite=None; Secure; HttpOnly`]);
+      res.status(200).json({ status: 200, message: "login successful", data: findUser, token: accessData });
+    } catch (error) {
+      next(error);
+    }
+  };
 }

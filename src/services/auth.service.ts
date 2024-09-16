@@ -7,6 +7,7 @@ import { AppDataSource } from "../database";
 import { httpException } from "../exceptions/httpException";
 import { compare, hash } from "bcrypt";
 import { UserEntity } from "../entities/users.entity";
+import { UserService } from "./user.service";
 
 const createToken = (user: User, expiresIn: number = 24 * 60 * 60 * 30): TokenData => {
   const dataStoredInToken: DataStoredInToken = {
@@ -52,5 +53,23 @@ export class AuthService extends Repository<UserEntity> {
     const cookie = accessToken(foundUser);
 
     return { cookie: cookie.token };
+  }
+
+  public async googleAuthentication(userData: User): Promise<{ cookie: string; result: User, accessData: string }> {
+    const findUser: User | null = await UserEntity.findOne({ where: { email: userData.email } });
+    let data: { cookie: string; result: User, accessData: string };
+    if (findUser) {
+      const res = await this.login(userData);
+      data = { cookie: res.cookie, result: res.findUser, accessData: res.accessData };
+    } else {
+      const user_id = "usr-" + Math.floor(1000 + Math.random() * 9000);
+      const result = await UserEntity.create({ ...userData, user_id }).save();
+      const tokenData = createToken(result);
+      const cookie = createCookie(tokenData);
+      const accessData = accessToken(result);
+      data = { cookie, result, accessData: accessData.token };
+    }
+
+    return data;
   }
 }
