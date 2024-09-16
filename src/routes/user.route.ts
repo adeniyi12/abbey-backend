@@ -14,7 +14,7 @@ export class UserRoute {
   private initializeRoutes() {
     this.router.post(`${this.path}/signup`, this.user.SignUp);
     this.router.get(`${this.path}`, AuthMiddleware, this.user.getUsers);
-    this.router.get(`${this.path}/details`, AuthMiddleware, this.user.getUserById);
+    this.router.get(`${this.path}/:id`, AuthMiddleware, this.user.getUserById);
     this.router.put(`${this.path}`, AuthMiddleware, this.user.updateUser);
     this.router.delete(`${this.path}`, AuthMiddleware, this.user.deleteUser);
   }

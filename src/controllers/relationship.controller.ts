@@ -30,12 +30,23 @@ export class RelationshipController {
     }
   };
 
-  public getRelationships = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+  public getRelationships = async (req: Request, res: Response, next: NextFunction) => {
     try {
-      const userId: string | undefined = String(req.user?.user_id);
+      const userId: string = req.params.id;
       const type = req.query.type as "followers" | "following" | "friends";
       const relationships: Relationship[] = await this.relationship.getRelationships(userId, type);
       res.status(200).json({ status: 200, message: "User relationships", data: relationships });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public isFollowing = async (req: RequestWithUser, res: Response, next: NextFunction) => {
+    try {
+      const userId: string | undefined = String(req.user?.user_id);
+      const friend_id: string = req.params.id;
+      const isFollowing: boolean = await this.relationship.isFollowing(userId, friend_id);
+      res.status(200).json({ status: 200, message: "User is following", data: isFollowing });
     } catch (error) {
       next(error);
     }

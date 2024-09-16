@@ -14,5 +14,6 @@ export class AuthRoute {
 
     private initializeRoutes() {
         this.router.post("/login", this.auth.Login);
+        this.router.get("/refresh", this.auth.refresh);
     }
 }

@@ -7,11 +7,22 @@ import { User } from "../interface/users.interface";
 export class AuthController {
   public auth = new AuthService(UserEntity, AppDataSource.manager);
 
-  public Login = async (req: Request, res: Response, next: NextFunction) => {
+  public Login = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const userData: User = req.body;
-      const { cookie, findUser } = await this.auth.login(userData);
-      res.status(200).json({ status: 200, message: "login successful", data: findUser, token: cookie });
+      const { cookie, findUser, accessData } = await this.auth.login(userData);
+      res.setHeader('Set-Cookie', [`${cookie}; SameSite=None; Secure; HttpOnly`]);
+      res.status(200).json({ status: 200, message: "login successful", data: findUser, token: accessData });
+    } catch (error) {
+      next(error);
+    }
+  };
+
+  public refresh = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    try {
+      const token = req.cookies['Authorization']
+      const refreshData = await this.auth.refreshToken(token);
+      res.status(200).json({ data: refreshData.cookie, message: 'refresh' });
     } catch (error) {
       next(error);
     }
