@@ -72,4 +72,6 @@ export class AuthService extends Repository<UserEntity> {
 
     return data;
   }
+
+
 }

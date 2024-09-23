@@ -12,7 +12,7 @@ export class FeedRoute {
   }
 
   private initializeRoutes() {
-    this.router.get(`${this.path}`, AuthMiddleware, this.feed.getFeeds);
-    this.router.post(`${this.path}`, AuthMiddleware, this.feed.createFeed);
+    // this.router.get(`${this.path}`, AuthMiddleware, this.feed.getFeeds);
+    // this.router.post(`${this.path}`, AuthMiddleware, this.feed.createFeed);
   }
 }

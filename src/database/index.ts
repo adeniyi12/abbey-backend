@@ -17,3 +17,13 @@ export const AppDataSource = new DataSource({
     migrations: [path.join(__dirname, '../**/*.migration.{js,ts}')],
     subscribers: [path.join(__dirname, '../**/*.subscriber.{js,ts}')],
 })
+
+
+// Initialize the data source
+AppDataSource.initialize()
+  .then(() => {
+    console.log('Data Source has been initialized!');
+  })
+  .catch((error) => console.error('Error during Data Source initialization:', error));
+
+export default AppDataSource;
