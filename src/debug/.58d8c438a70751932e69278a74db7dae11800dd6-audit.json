@@ -1,0 +1,25 @@
+{
+    "keep": {
+        "days": false,
+        "amount": 30
+    },
+    "auditLog": "C:\\Users\\tbello\\projects\\abbey-backend\\src\\debug\\.58d8c438a70751932e69278a74db7dae11800dd6-audit.json",
+    "files": [
+        {
+            "date": 1726920922045,
+            "name": "C:\\Users\\tbello\\projects\\abbey-backend\\src\\debug\\2024-09-21.log",
+            "hash": "ee9526ce8fcb61c786453667be1974552ab1d8f35125181db1a75841ff263317"
+        },
+        {
+            "date": 1727037133326,
+            "name": "C:\\Users\\tbello\\projects\\abbey-backend\\src\\debug\\2024-09-22.log",
+            "hash": "1d9439473f133aceda355254c6e1418bf7a39e98eb7c83d212ad79fe37f3374a"
+        },
+        {
+            "date": 1727099749935,
+            "name": "C:\\Users\\tbello\\projects\\abbey-backend\\src\\debug\\2024-09-23.log",
+            "hash": "35772e85c561d73dbc405f9b3b882117b5b4d1629307fa982438255d85008667"
+        }
+    ],
+    "hashType": "sha256"
+}

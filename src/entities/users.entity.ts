@@ -17,7 +17,7 @@ export class UserEntity extends BaseEntity implements User {
     @Unique(["email"])
     email: string;
 
-    @Column()
+    @Column({ nullable: true })
     password: string;
 
     @Column({ nullable: true })

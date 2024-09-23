@@ -4,3 +4,4 @@ test.md
 ormconfig.json
 dist
 src/logs
+package-lock.json

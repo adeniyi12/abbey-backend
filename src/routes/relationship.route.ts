@@ -11,9 +11,9 @@ export class RelationshipRoute {
     }
 
     private initializeRoutes() {
-        this.router.post("/follow/:id", AuthMiddleware, this.relationship.followUser);
-        this.router.post("/unfollow/:id", AuthMiddleware, this.relationship.unfollowUser);
-        this.router.get("/relationships/:id", AuthMiddleware, this.relationship.getRelationships);
-        this.router.get("/isFollowing/:id", AuthMiddleware, this.relationship.isFollowing);
+        // this.router.post("/follow/:id", AuthMiddleware, this.relationship.followUser);
+        // this.router.post("/unfollow/:id", AuthMiddleware, this.relationship.unfollowUser);
+        // this.router.get("/relationships/:id", AuthMiddleware, this.relationship.getRelationships);
+        // this.router.get("/isFollowing/:id", AuthMiddleware, this.relationship.isFollowing);
     }
 }

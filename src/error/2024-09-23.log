@@ -1,0 +1,6 @@
+2024-09-23 14:58:02 error: uncaughtException: null value in column "password" of relation "user_entity" violates not-null constraint
+QueryFailedError: null value in column "password" of relation "user_entity" violates not-null constraint
+    at PostgresQueryRunner.query (C:\Users\tbello\projects\abbey-backend\node_modules\typeorm\src\driver\postgres\PostgresQueryRunner.ts:331:19)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at async DataSource.query (C:\Users\tbello\projects\abbey-backend\node_modules\src\data-source\DataSource.ts:538:20)
+    at async Strategy._verify (C:\Users\tbello\projects\abbey-backend\src\middlewares\passport.middleware.ts:37:49)
